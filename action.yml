@@ -1,0 +1,13 @@
+name: 'Spin up runner'
+description: 'Login to Bruno and create an ephemeral runner'
+inputs:
+  memory:
+    description: 'Memory to allocate'
+    required: true
+    default: '8GB'
+outputs:
+  slurm_command:
+    description: 'Slurm command to submit'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
