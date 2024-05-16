@@ -1,0 +1,19 @@
+on: [push]
+
+jobs:
+  action_job:
+    runs-on: ubuntu-latest
+    name: A test job
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Action step
+        uses: ./ # Uses an action in the root directory
+        id: my_step
+        with:
+          memory: '16GB'
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.my_step.slurm_command }}"
