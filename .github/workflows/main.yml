@@ -16,4 +16,4 @@ jobs:
           memory: '16GB'
       # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.my_step.slurm_command }}"
+        run: echo "The time was ${{ steps.my_step.outputs.slurm_command }}"
