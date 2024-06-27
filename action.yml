@@ -1,13 +1,18 @@
 name: 'Spin up runner'
 description: 'Login to Bruno and create an ephemeral runner'
 inputs:
-  memory:
-    description: 'Memory to allocate'
+  repository:
+    description: 'Repository name'
+    default: ${{ github.repository }}
+  bruno_user:
+    description: 'Bruno username'
     required: true
-    default: '8GB'
+  url:
+    description: 'URL to use'
+    required: true 
 outputs:
-  slurm_command:
-    description: 'Slurm command to submit'
+  command:
+    description: 'SSH command to create runner'
 runs:
   using: 'node20'
   main: 'dist/index.js'
